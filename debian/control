@@ -1,0 +1,31 @@
+Source: matrix-creator-openocd
+Section: embedded
+Priority: extra
+Maintainer: Admobilize <info@admobilize.com>
+Uploaders: Admobilize <info@admobilize.com>
+Build-Depends: cdbs, debhelper (>= 7), autotools-dev,
+               texinfo, texlive, 
+               autotools-dev, autoconf,
+               libjim-dev,
+               pkg-config,
+               dh-autoreconf
+Standards-Version: 3.9.6
+Homepage: https://github.com/matrix-io/matrix-creator-openocd
+
+Package: matrix-creator-openocd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Open on-chip JTAG debug solution for ARM and MIPS systems
+ OpenOCD is an on-chip debugging, in-system programming and boundary-scan
+ testing tool for ARM and MIPS systems.
+ .
+ The debugger uses an IEEE 1149-1 compliant JTAG TAP bus master to access
+ on-chip debug functionality available on ARM based microcontrollers or
+ system-on-chip solutions. For MIPS systems the EJTAG interface is supported.
+ .
+ User interaction is realized through a telnet command line interface,
+ a gdb (the GNU debugger) remote protocol server, and a simplified RPC
+ connection that can be used to interface with OpenOCD's Jim Tcl engine.
+ .
+ OpenOCD supports many different types of JTAG interfaces/programmers.
+

@@ -1,0 +1,566 @@
+This package was debianized by Uwe Hermann <uwe@debian.org> on
+Tue, 27 Mar 2007 14:46:18 +0200
+
+It was downloaded from:
+
+   http://openocd.sourceforge.net/
+
+See the AUTHORS file for the complete list of upstream authors.
+
+-------------------------------------------------------------------------------
+
+Files: *
+Copyright: © 2004-2014 Dominic Rath et al.
+License: GPL-2+
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+-------------------------------------------------------------------------------
+
+Files: src/openocd.c
+Copyright: © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Richard Missenden <richard.missenden@googlemail.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/ecosboard.c,
+       src/flash/ecos.c,
+       src/jtag/dummy.c,
+       src/jtag/zy1000.c,
+       src/helper/ioutil.c
+Copyright: © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/aduc702x.c
+Copyright: © 2008 Kevin McGuire
+           © 2008 Marcel Wijlaars
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/at91sam7_old.[ch],
+       src/flash/stellaris.h
+Copyright: © 2006 Magnus Lundin <lundin@mlu.mine.nu>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/at91sam7.[ch]
+Copyright: © 2006 Magnus Lundin <lundin@mlu.mine.nu>
+             2008 Gheorghe Guran (atlas)
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/stellaris.c
+Copyright: © 2006 Magnus Lundin <lundin@mlu.mine.nu>
+             2008 Spencer Oliver <spen@spen-soft.co.uk>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/flash.[ch],
+       src/flash/str9x.c,
+       src/server/gdb_server.[ch],
+       src/server/server.[ch],
+       src/server/telnet_server.[ch],
+       src/target/embeddedice.[ch],
+       src/target/image.[ch],
+       src/target/target.h,
+       src/target/target_request.[ch]
+Copyright: © 2005-2007 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/lpc288x.[ch]
+Copyright: © 2008 Karl RobinSod <karl.robinsod@gmail.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/mflash.[ch]
+Copyright: © 2007-2008 Unsik Kim <donari75@gmail.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/ocl.[ch],
+       src/flash/ocl/at91sam7x/*,
+       src/jtag/bitq.[ch],
+       src/jtag/presto.c
+Copyright: © 2007 Pavel Chromy <chromy@asix.cz>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/nand.c
+Copyright: © 2002 Thomas Gleixner <tglx@linutronix.de> 
+           © 2007 Dominic Rath <Dominic.Rath@gmx.de>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/nand.h
+Copyright: © 2000 David Woodhouse <dwmw2@mvhi.com>
+           © 2000 Steven J. Hill <sjhill@realitydiluted.com>
+           © 2000 Thomas Gleixner <tglx@linutronix.de> 
+           © 2007 Dominic Rath <Dominic.Rath@gmx.de>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/s3c2410_nand.c,
+       src/flash/s3c2412_nand.c,
+       src/flash/s3c2440_nand.c,
+       src/flash/s3c2443_nand.c,
+       src/flash/s3c24xx_nand.c,
+       src/flash/s3c24xx_nand.h
+Copyright: © 2007,2008 Ben Dooks <ben@fluff.org>
+License: GPL-2+
+
+------------------------------------------------------------------------------
+
+Files: src/flash/s3c24xx_regs_nand.h
+Copyright: © 2004,2005 Simtec Electronics <linux@simtec.co.uk>
+License: GPL-2
+
+------------------------------------------------------------------------------
+
+Files: src/flash/stm32x.[ch],
+       src/flash/str7x.[ch],
+       src/flash/str9x.h,
+       src/flash/str9xpec.[ch],
+       src/jtag/ft2232.c,
+       src/jtag/parport.c,
+       src/target/arm7tdmi.[ch],
+       src/target/arm966e.[ch],
+       src/target/armv4_5.h,
+       contrib/libdcc/dcc_stdio.h
+Copyright: © 2004-2008 Dominic Rath <Dominic.Rath@gmx.de>
+             2008 Spencer Oliver <spen@spen-soft.co.uk>
+License: GPL-2+
+
+------------------------------------------------------------------------------
+
+Files: src/jtag/rlink/rlink.c
+Copyright: © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Rob Brown <rob@cobbleware.com>
+           © 2008 Lou Deluxe <lou.openocd012@fixit.nospammail.net>
+License: GPL-2+
+
+------------------------------------------------------------------------------
+
+Files: src/jtag/rlink/init.m4,
+       src/jtag/rlink/dtc_cmd.h,
+       src/jtag/rlink/st7.h,
+       src/jtag/rlink/rlink.h,
+       src/jtag/rlink/call.m4,
+       src/jtag/rlink/Makefile,
+       src/jtag/rlink/ep1_cmd.h
+Copyright: © 2008 Lou Deluxe <lou.openocd012@fixit.nospammail.net>
+License: GPL-2+
+
+------------------------------------------------------------------------------
+
+Files: src/jtag/vsllink.c
+Copyright: © 2008 Simon Qian <SimonQian@SimonQian.com>
+License: GPL-2+
+
+------------------------------------------------------------------------------
+
+Files: src/server/httpd.c
+Copyright: © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Free Software Foundation
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/flash/tms470.[ch]
+Copyright: © 2007,2008 Christopher Kilgour <techie@whiterocker.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/helper/binarybuffer.[ch],
+       src/helper/options.c,
+       src/helper/command.h,
+       src/helper/configuration.[ch],
+       src/helper/types.h,
+       src/target/arm_jtag.[ch],
+       src/target/register.[ch],
+       src/jtag/bitbang.[ch],
+       src/jtag/jtag.[ch]
+Copyright: © 2004-2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/helper/command.c
+Copyright: © 2007 David Parrish <david@dparrish.com>
+           © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Duane Ellis <openocd@duaneeellis.com>
+License: GPL-2+
+   The "© 2007" for David Parrish is not explicitly mentioned in the code,
+   but based on http://sourceforge.net/project/showfiles.php?group_id=79019.
+
+-------------------------------------------------------------------------------
+
+Files: src/helper/fileio.[ch],
+       src/helper/log.[ch],
+       src/helper/replacements.[ch],
+       src/helper/time_support.[ch],
+       src/target/armv4_5.c
+Copyright: © 2005-2007 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/helper/jim.[ch],
+       src/helper/jim-eventloop.[ch]
+Copyright: © 2005 Salvatore Sanfilippo <antirez@invece.org>
+           © 2005 Clemens Hintze <c.hintze@gmx.net>
+           © 2005 patthoyts - Pat Thoyts <patthoyts@users.sf.net> 
+           © 2008 oharboe - Øyvind Harboe - oyvind.harboe@zylin.com
+           © 2008 Andrew Lunn <andrew@lunn.ch>
+           © 2008 Duane Ellis <openocd@duaneellis.com>
+           © 2008 Uwe Klein <uklein@klein-messgeraete.de>
+           © 2008 Steve Bennett <steveb@workware.net.au>
+License:
+   The FreeBSD license
+   
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+   
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials
+      provided with the distribution.
+   
+   THIS SOFTWARE IS PROVIDED BY THE JIM TCL PROJECT ``AS IS'' AND ANY
+   EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+   PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+   JIM TCL PROJECT OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+   INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+   (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+   
+   The views and conclusions contained in the software and documentation
+   are those of the authors and should not be interpreted as representing
+   official policies, either expressed or implied, of the Jim Tcl Project.
+
+-------------------------------------------------------------------------------
+
+Files: src/helper/tclapi.c
+Copyright: © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Duane Ellis <openocd@duaneeellis.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/jtag/at91rm9200.c
+Copyright: © 2006 Anders Larsen <al@alarsen.net>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/jtag/jlink.c
+Copyright: © 2007 Juergen Stuber <juergen@jstuber.net>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/jtag/usbprog.c
+Copyright: © 2007 Benedikt Sauter <sauter@ixbat.de>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/arm11.c
+Copyright: © 2008 digenius technology GmbH
+           © 2008 Oyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Georg Acher <acher@in.tum.de>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/arm11_dbgtap.c
+Copyright: © 2008 digenius technology GmbH
+           © 2008 Oyvind Harboe <oyvind.harboe@zylin.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/arm11.h
+Copyright: © 2008 digenius technology GmbH
+           © 2008 Georg Acher <acher@in.tum.de>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/arm7_9_common.[ch]
+Copyright: © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+           © 2008 Hongtao Zheng <hontor@126.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/arm9tdmi.c
+Copyright: © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+           © 2008 Hongtao Zheng <hontor@126.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/arm9tdmi.h
+Copyright: © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/arm_simulator.c
+Copyright: © 2006 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2008 Hongtao Zheng <hontor@126.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/armv7m.c
+Copyright: © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2006 Magnus Lundin <lundin@mlu.mine.nu>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/armv7m.h,
+       src/target/cortex_m3.[ch]
+Copyright: © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2006 Magnus Lundin <lundin@mlu.mine.nu>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/cortex_swjdp.[ch]
+Copyright: © 2006 Magnus Lundin <lundin@mlu.mine.nu>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/etm.h
+Copyright: © 2005,2007 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007 Vincent Palatin <vincent.palatin_openocd@m4x.org>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/feroceon.c
+Copyright: © 2008 Marvell Semiconductors, Inc.
+           © 2008 Hongtao Zheng <hontor@126.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/mips32.c
+Copyright: © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+           © 2008 David T.L. Wong
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/mips32_dmaacc.[ch]
+Copyright: © 2008 John McCarthy <jgmcc@magma.ca>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+           © 2008 David T.L. Wong
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/mips32.h,
+       src/target/mips32_pracc.[ch],
+       src/target/mips_ejtag.[ch],
+       src/target/mips_m4k.[ch]
+Copyright: © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+           © 2008 David T.L. Wong
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/target/target.c
+Copyright: © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Duane Ellis <openocd@duaneeellis.com>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+           © 2008 Rick Altherr <kc8apf@kc8apf.net>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: src/xsvf/xsvf.c
+Copyright: © 2005 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2007-2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+           © 2008 Peter Hettkamp <peter.hettkamp@htp-tel.de>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: ecosflash/*
+Copyright: © 2008 Øyvind Harboe <oyvind.harboe@zylin.com>
+License:
+   eCos is free software; you can redistribute it and/or modify it under
+   the terms of the GNU General Public License as published by the Free
+   Software Foundation; either version 2 or (at your option) any later version.
+   
+   eCos is distributed in the hope that it will be useful, but WITHOUT ANY
+   WARRANTY; without even the implied warranty of MERCHANTABILITY or
+   FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+   for more details.
+   
+   You should have received a copy of the GNU General Public License along
+   with eCos; if not, write to the Free Software Foundation, Inc.,
+   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+   
+   As a special exception, if other files instantiate templates or use macros
+   or inline functions from this file, or you compile this file and link it
+   with other works to produce a work based on this file, this file does not
+   by itself cause the resulting work to be covered by the GNU General Public
+   License. However the source code for this file must still be made available
+   in accordance with section (3) of the GNU General Public License.
+   
+   This exception does not invalidate any other reasons why a work based on
+   this file might be covered by the GNU General Public License.
+
+-------------------------------------------------------------------------------
+
+Files: contrib/libdcc/dcc_stdio.c
+Copyright: © 2008 Dominic Rath <Dominic.Rath@gmx.de>
+           © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+           © 2008 Frederik Kriewtz <frederik@kriewitz.eu>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: contrib/libdcc/example.c
+Copyright: © 2008 Spencer Oliver <spen@spen-soft.co.uk>
+           © 2008 Frederik Kriewtz <frederik@kriewitz.eu>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: testing/examples/*
+Copyright: © 2006 Michael Fischer <fischermi@t-online.de>
+License: BSD-3
+
+-------------------------------------------------------------------------------
+
+Files: doc/openocd.1
+Copyright: © 2008 Uwe Hermann <uwe@hermann-uwe.de>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: doc/*.texi
+Copyright: © 2007-2008 Spen <spen@@spen-soft.co.uk>
+License: GFDL-1.2+
+
+-------------------------------------------------------------------------------
+
+Files: tools/rlink_make_speed_table/rlink_make_speed_table.pl,
+       tools/st7_dtc_as/st7_dtc_as.pl
+Copyright: © 2008 Lou Deluxe <lou.openocd012@fixit.nospammail.net>
+License: GPL-2+
+
+-------------------------------------------------------------------------------
+
+Files: testing/build.test1/mingw32_help/include/elf.h,
+       testing/build.test1/mingw32_help/include/sys/cdefs.h
+Copyright: © 1998-2005 Red Hat, Inc.
+License: GPL-2
+   This software is a copyrighted work licensed under the terms of the
+   Cygwin license. Please consult the file "CYGWIN_LICENSE" for details.
+
+   This is a copy of CYGWIN_LICENSE from the Cygwin sources:
+   
+      This program is free software; you can redistribute it and/or modify it
+      under the terms of the GNU General Public License (GPL) as published by
+      the Free Software Foundation version 2 of the License.
+      
+      This program is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+      Public License for more details.
+      
+      You should have received a copy of the GNU General Public License along
+      with this program; if not, write to the Free Software Foundation, Inc.,
+      51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+
+  See also: http://www.cygwin.com/licensing.html
+
+-------------------------------------------------------------------------------
+
+Files: testing/build.test1/mingw32_help/include/sys/elf32.h,
+       testing/build.test1/mingw32_help/include/sys/elf_common.h,
+       testing/build.test1/mingw32_help/include/sys/elf64.h,
+       testing/build.test1/mingw32_help/include/sys/elf_generic.h
+Copyright: © 1996-1998 John D. Polstra
+License: other
+   All rights reserved.
+   
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+   
+   THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+   FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+   SUCH DAMAGE.
+
+------------------------------------------------------------------------------
+
+Files: debian/*
+Copyright: © 2007-2012 Uwe Hermann <uwe@debian.org>
+License: PD
+   The packaging done by Uwe Hermann <uwe@debian.org> is hereby
+   released as public domain.
+
