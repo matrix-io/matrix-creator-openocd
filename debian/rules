@@ -1,0 +1,64 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/makefile.mk
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/utils.mk
+include /usr/share/cdbs/1/rules/autoreconf.mk
+
+# Also build PDF and HTML documentation.
+DEB_MAKE_BUILD_TARGET := all pdf html
+
+# Don't strip/compress certain files.
+DEB_STRIP_EXCLUDE := .elf .bin
+DEB_COMPRESS_EXCLUDE := .elf .bin
+
+# TODO: Use --enable-oocd_trace later, right now it's just a proof-of-concept.
+DEB_CONFIGURE_EXTRA_FLAGS := \
+	--enable-dummy \
+	--disable-ep93xx \
+	--disable-at91rm9200 \
+	--disable-usbprog \
+	--disable-jlink \
+	--disable-vsllink \
+	--disable-rlink \
+	--disable-ulink \
+	--disable-arm-jtag-ew \
+	--disable-buspirate \
+	--disable-osbdm \
+	--disable-opendous \
+	--disable-remote-bitbang \
+	--disable-werror \
+	--disable-internal-jimtcl \
+        --disable-internal-libjaylink \
+        --disable-stlink \
+        --disable-ti-icdi \
+        --disable-usb-blaster-2 \
+        --disable-aice \
+        --disable-armjtagew \
+        --disable-cmsis-dap \
+        --disable-usbprog --disable-ftdi --enable-sysfsgpio --enable-bcm2835gpio
+
+post-patches::
+	@# Copy udev rules file into debian/ so that dh_installudev finds it.
+	cp contrib/99-openocd.rules debian/openocd.udev
+
+binary-install/openocd::
+	# Install the loaders/ subdir in /usr/share/doc.
+	cp -r contrib/loaders debian/openocd/usr/share/doc/openocd
+
+binary-post-install/openocd::
+	@# Don't ship openocd.udev in /usr/share, dh_installudev handles it.
+	rm -f debian/openocd/usr/share/openocd/contrib/99-openocd.rules
+	@# Drop /usr/share/info/dir, it's generated at runtime.
+	rm -f debian/openocd/usr/share/info/dir
+	@# Drop .la files
+	rm -f `find debian/openocd -name '*.la'`
+
+clean::
+	@# Clean copied udev file.
+	rm -f debian/openocd.udev
+
+# For /usr/share/cdbs/1/rules/utils.mk sanity check.
+common-binary-post-install-arch:: list-missing
+

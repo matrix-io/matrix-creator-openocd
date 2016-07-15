@@ -1,0 +1,2 @@
+shlibs:Depends=libc6 (>= 2.15), libjim0.75 (>= 0.73)
+misc:Depends=
