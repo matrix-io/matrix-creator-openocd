@@ -1,3 +1,9 @@
+matrix-creator-openocd (1.0.0.001-1.2) unstable; urgency=medium
+
+  * Add support for Raspberry Pi B+.
+
+ --  <pi@raspberrypi>  Tue, 30 Aug 2016 14:45:33 -0800
+
 matrix-creator-openocd (1.0.0.001-1) unstable; urgency=low
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
