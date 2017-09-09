@@ -5,7 +5,7 @@ pipeline:
     commands:
       # Install dependencies
       - apt-get update
-      - apt-get install cdbs debhelper autotools-dev texinfo texlive autotools-dev
+      - apt-get install --yes cdbs debhelper autotools-dev texinfo texlive autotools-dev
           autoconf libjim-dev pkg-config dh-autoreconf
       - cd $MOUNTDIR 
       - debuild -us -uc
