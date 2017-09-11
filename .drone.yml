@@ -6,6 +6,7 @@ pipeline:
     commands:
       # Init chroot
       - /docker-entrypoint.sh
+      chroot /chfs qemu-arm-static /bin/bash
       # Install dependencies
       - apt-get update
       - apt-get install --yes cdbs debhelper autotools-dev texinfo texlive autotools-dev
