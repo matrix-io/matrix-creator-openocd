@@ -8,12 +8,9 @@ pipeline:
       - /docker-entrypoint.sh
       - chroot /chfs qemu-arm-static /bin/bash
       # Install dependencies
-      - apt-get update
-      - apt-get install --yes cdbs debhelper autotools-dev texinfo texlive autotools-dev
-          autoconf libjim-dev pkg-config dh-autoreconf
-      - cd $MOUNTDIR 
-      - ./configure
-      - debuild -us -uc -b
+      - chroot /chfs qemu-arm-static apt-get update
+      - chroot /chfs qemu-arm-static apt-get install --yes cdbs debhelper autotools-dev texinfo texlive autotools-dev autoconf libjim-dev pkg-config dh-autoreconf
+      - chroot /chfs qemu-arm-static && cd $MOUNTDIR && ./configure && debuild -us -uc -b
 
 matrix:
   include: 
