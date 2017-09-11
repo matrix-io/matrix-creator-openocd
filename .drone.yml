@@ -3,12 +3,15 @@ pipeline:
   build-debs:
     image: gcr.io/admobilize-testing/builder-qemu:latest
     commands:
+      # Init chroot
+      - /docker-entrypoint.sh
       # Install dependencies
       - apt-get update
       - apt-get install --yes cdbs debhelper autotools-dev texinfo texlive autotools-dev
           autoconf libjim-dev pkg-config dh-autoreconf
       - cd $MOUNTDIR 
-      - debuild -us -uc
+      - ./configure
+      - debuild -us -uc -b
 
 
 matrix:
