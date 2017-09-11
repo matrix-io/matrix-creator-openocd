@@ -1,12 +1,8 @@
-services:
-  docker:
-    image: gcr.io/admobilize-testing/builder-qemu:latest
-    privileged: true
-
 pipeline:
 
   build-debs:
     image: gcr.io/admobilize-testing/builder-qemu:latest
+    privileged: true
     commands:
       # Init chroot
       - /docker-entrypoint.sh
