@@ -8,7 +8,7 @@ pipeline:
     body: |
       apt-get update
       apt-get install --yes cdbs debhelper autotools-dev texinfo texlive autotools-dev autoconf libjim-dev pkg-config dh-autoreconf
-      cd $MOUNTDIR && ./configure && debuild -us -uc -b
+      ./configure && debuild -us -uc -b
 
 matrix:
   include: 
