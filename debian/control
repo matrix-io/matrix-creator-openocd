@@ -1,4 +1,4 @@
-Source: matrix-creator-openocd
+Source: matrixio-openocd
 Section: embedded
 Priority: extra
 Maintainer: Admobilize <info@admobilize.com>
@@ -12,7 +12,7 @@ Build-Depends: cdbs, debhelper (>= 7), autotools-dev,
 Standards-Version: 3.9.6
 Homepage: https://github.com/matrix-io/matrix-creator-openocd
 
-Package: matrix-creator-openocd
+Package: matrixio-openocd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Open on-chip JTAG debug solution for ARM and MIPS systems
