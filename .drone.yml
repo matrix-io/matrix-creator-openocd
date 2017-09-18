@@ -8,7 +8,7 @@ pipeline:
     mountoffset: ${MOUNTOFFSET}
     body: |
       apt-get update
-      apt-get install --yes cdbs debhelper autotools-dev texinfo texlive autotools-dev autoconf libjim-dev pkg-config dh-autoreconf
+      apt-get install --yes libusb-1.0-0-dev cdbs debhelper autotools-dev texinfo texlive autotools-dev autoconf libjim-dev pkg-config dh-autoreconf
       ./bootstrap && ./configure && debuild -us -uc -b
       mv ../*.deb .
 
