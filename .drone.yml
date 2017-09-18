@@ -39,7 +39,7 @@ pipeline:
       {{#success build.status}}
         {{build.author}} just built `{{repo.name}}:{{build.branch}}` from <{{repo.link}}|#{{truncate build.commit 8}}>
         :new: {{build.message}}
-        :debian: The new `matrixio-xc3sprog_{{drone.tag}}_armhf.deb` was created
+        :debian: The new `matrixio-openocd_{{drone.tag}}_armhf.deb` was created
       {{else}}
         {{build.author}} just broke the build of `{{repo.name}}:{{build.branch}}` with <{{repo.link}}|#{{truncate build.commit 8}}>
         :new: :zombie: {{build.message}}
@@ -52,10 +52,10 @@ matrix:
     - CODENAME: jessie
       DISTRIBUTION: raspbian
       MOUNTOFFSET: 48234496
-      MOUNTDIR: /drone/src/github.com/matrix-io/xc3sprog
+      MOUNTDIR: /drone/src/github.com/matrix-io/openocd
       MOUNTIMG: https://storage.googleapis.com/raspbian-images/2017-07-05-raspbian-jessie-debuild.img.gz
     - CODENAME: stretch
       MOUNTOFFSET: 48234496
-      MOUNTDIR: /drone/src/github.com/matrix-io/xc3sprog
+      MOUNTDIR: /drone/src/github.com/matrix-io/openocd
       DISTRIBUTION: raspbian
       MOUNTIMG: https://storage.googleapis.com/raspbian-images/2017-08-16-raspbian-stretch-debuild.img.gz
