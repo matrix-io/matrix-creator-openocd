@@ -4,12 +4,12 @@
 OpenOCD provides on-chip programming and debugging support with a
 layered architecture of JTAG interface and TAP support including:
 
-- (X)SVF playback to faciliate automated boundary scan and FPGA/CPLD
+* (X)SVF playback to faciliate automated boundary scan and FPGA/CPLD
   programming;
-- debug target support (e.g. ARM, MIPS): single-stepping,
+* debug target support (e.g. ARM, MIPS): single-stepping,
   breakpoints/watchpoints, gprof profiling, etc;
-- flash chip drivers (e.g. CFI, NAND, internal flash);
-- embedded TCL interpreter for easy scripting.
+* flash chip drivers (e.g. CFI, NAND, internal flash);
+* embedded TCL interpreter for easy scripting.
 
 Several network interfaces are available for interacting with OpenOCD:
 telnet, TCL, and GDB. The GDB server enables OpenOCD to function as a
@@ -19,31 +19,29 @@ Pro).
 
 This README file contains an overview of the following topics:
 
-- quickstart instructions,
-- how to find and build more OpenOCD documentation,
-- list of the supported hardware,
-- the installation and build process,
-- packaging tips.
+* quickstart instructions,
+* how to find and build more OpenOCD documentation,
+* list of the supported hardware,
+* the installation and build process,
+* packaging tips.
 
-
-============================
-Quickstart for the impatient
-============================
+## Quickstart for the impatient
 
 If you have a popular board then just start OpenOCD with its config,
 e.g.:
-
-  openocd -f board/stm32f4discovery.cfg
-
+```
+  openocd -f board/stm32f4discovery.cfg
+```
 If you are connecting a particular adapter with some specific target,
 you need to source both the jtag interface and the target configs,
 e.g.:
-
-  openocd -f interface/ftdi/jtagkey2.cfg -c "transport select jtag" \
+```
+  openocd -f interface/ftdi/jtagkey2.cfg -c "transport select jtag" \
           -f target/ti_calypso.cfg
 
   openocd -f interface/stlink-v2-1.cfg -c "transport select hla_swd" \
-          -f target/stm32l0.cfg
+          -f target/stm32l0.cfg
+```
 
 NB: when using an FTDI-based adapter you should prefer configs in the
 ftdi directory; the old configs for the ft2232 are deprecated.
@@ -53,9 +51,7 @@ After OpenOCD startup, connect GDB with
   (gdb) target extended-remote localhost:3333
 
 
-=====================
-OpenOCD Documentation
-=====================
+## OpenOCD Documentation
 
 In addition to the in-tree documentation, the latest manuals may be
 viewed online at the following URLs:
@@ -74,8 +70,8 @@ by subscribing to the OpenOCD developer mailing list:
 
 	openocd-devel@lists.sourceforge.net
 
-Building the OpenOCD Documentation
-----------------------------------
+# Building the OpenOCD Documentation
+
 
 By default the OpenOCD build process prepares documentation in the
 "Info format" and installs it the standard way, so that "info openocd"
@@ -84,25 +80,29 @@ can access it.
 Additionally, the OpenOCD User's Guide can be produced in the
 following different formats:
 
-  # If PDFVIEWER is set, this creates and views the PDF User Guide.
-  make pdf && ${PDFVIEWER} doc/openocd.pdf
-
-  # If HTMLVIEWER is set, this creates and views the HTML User Guide.
-  make html && ${HTMLVIEWER} doc/openocd.html/index.html
+If PDFVIEWER is set, this creates and views the PDF User Guide.
+```
+make pdf && ${PDFVIEWER} doc/openocd.pdf
+```
+If HTMLVIEWER is set, this creates and views the HTML User Guide.
+```
+make html && ${HTMLVIEWER} doc/openocd.html/index.html
+```
 
 The OpenOCD Developer Manual contains information about the internal
 architecture and other details about the code:
 
-  # NB! make sure doxygen is installed, type doxygen --version
-  make doxygen && ${HTMLVIEWER} doxygen/index.html
+NB! make sure doxygen is installed, type doxygen --version
+```
+  make doxygen && ${HTMLVIEWER} doxygen/index.html
+```
 
 
-==================
-Supported hardware
-==================
+## Supported hardware
 
-JTAG adapters
--------------
+
+### JTAG adapters
+
 
 AICE, ARM-JTAG-EW, ARM-USB-OCD, ARM-USB-TINY, AT91RM9200, axm0432,
 BCM2835, Bus Blaster, Buspirate, Chameleon, CMSIS-DAP, Cortino, DENX,
@@ -116,15 +116,14 @@ STM32-PerformanceStick, STR9-comStick, sysfsgpio, TUMPA, Turtelizer,
 ULINK, USB-A9260, USB-Blaster, USB-JTAG, USBprog, VPACLink, VSLLink,
 Wiggler, XDS100v2, Xverve.
 
-Debug targets
--------------
+### Debug targets
 
 ARM11, ARM7, ARM9, AVR32, Cortex-A, Cortex-R, Cortex-M,
 Feroceon/Dragonite, DSP563xx, DSP5680xx, FA526, MIPS EJTAG, NDS32,
 XScale, Intel Quark.
 
-Flash drivers
--------------
+### Flash drivers
+
 
 ADUC702x, AT91SAM, AVR, CFI, DSP5680xx, EFM32, EM357, FM3, FM4, Kinetis,
 LPC8xx/LPC1xxx/LPC2xxx/LPC541xx, LPC2900, LPCSPIFI, Marvell QSPI,
@@ -133,12 +132,9 @@ STR7x, STR9x, nRF51; NAND controllers of AT91SAM9, LPC3180, LPC32xx,
 i.MX31, MXC, NUC910, Orion/Kirkwood, S3C24xx, S3C6400, XMC1xxx, XMC4xxx.
 
 
-==================
-Installing OpenOCD
-==================
+## Installing OpenOCD
 
-A Note to OpenOCD Users
------------------------
+### A Note to OpenOCD Users
 
 If you would rather be working "with" OpenOCD rather than "on" it, your
 operating system or JTAG interface supplier may provide binaries for
@@ -157,14 +153,13 @@ Users of these binary versions of OpenOCD must contact their Packager to
 ask for support or newer versions of the binaries; the OpenOCD
 developers do not support packages directly.
 
-A Note to OpenOCD Packagers
----------------------------
+### A Note to OpenOCD Packagers
 
 You are a PACKAGER of OpenOCD if you:
 
-- Sell dongles and include pre-built binaries;
-- Supply tools or IDEs (a development solution integrating OpenOCD);
-- Build packages (e.g. RPM or DEB files for a GNU/Linux distribution).
+* Sell dongles and include pre-built binaries;
+* Supply tools or IDEs (a development solution integrating OpenOCD);
+* Build packages (e.g. RPM or DEB files for a GNU/Linux distribution).
 
 As a PACKAGER, you will experience first reports of most issues.
 When you fix those problems for your users, your solution may help
@@ -178,20 +173,19 @@ resolved in our future releases.
 That said, the OpenOCD developers would also like you to follow a few
 suggestions:
 
-- Send patches, including config files, upstream, participate in the
+* Send patches, including config files, upstream, participate in the
   discussions;
-- Enable all the options OpenOCD supports, even those unrelated to your
+* Enable all the options OpenOCD supports, even those unrelated to your
   particular hardware;
-- Use "ftdi" interface adapter driver for the FTDI-based devices.
+* Use "ftdi" interface adapter driver for the FTDI-based devices.
 
 As a PACKAGER, never link against the FTD2XX library, as the resulting
 binaries can't be legally distributed, due to the restrictions of the
 GPL.
 
 
-================
-Building OpenOCD
-================
+
+## Building OpenOCD
 
 The INSTALL file contains generic instructions for running 'configure'
 and compiling the OpenOCD source code. That file is provided by
@@ -201,8 +195,7 @@ the GNU autotools, then you should read those instructions first.
 The remainder of this document tries to provide some instructions for
 those looking for a quick-install.
 
-OpenOCD Dependencies
---------------------
+### OpenOCD Dependencies
 
 GCC or Clang is currently required to build OpenOCD. The developers
 have begun to enforce strict code warnings (-Wall, -Werror, -Wextra,
@@ -236,8 +229,7 @@ drivers need either one of:
 
 CMSIS-DAP support needs HIDAPI library.
 
-Permissions delegation
-----------------------
+### Permissions delegation
 
 Running OpenOCD with root/administrative permissions is strongly
 discouraged for security reasons.
@@ -254,8 +246,7 @@ For parport adapters on Windows you need to run install_giveio.bat
 (it's also possible to use "ioperm" with Cygwin instead) to give
 ordinary users permissions for accessing the "LPT" registers directly.
 
-Compiling OpenOCD
------------------
+### Compiling OpenOCD
 
 To build OpenOCD, use the following sequence of commands:
 
@@ -266,15 +257,16 @@ To build OpenOCD, use the following sequence of commands:
 
 The 'configure' step generates the Makefiles required to build
 OpenOCD, usually with one or more options provided to it. The first
-'make' step will build OpenOCD and place the final executable in
-'./src/'. The final (optional) step, ``make install'', places all of
+`make` step will build OpenOCD and place the final executable in
+`./src/`. The final (optional) step, ``make install``, places all of
 the files in the required location.
 
 To see the list of all the supported options, run
-  ./configure --help
+ ```
+ ./configure --help
+```
+### Cross-compiling Options
 
-Cross-compiling Options
------------------------
 
 Cross-compiling is supported the standard autotools way, you just need
 to specify the cross-compiling target triplet in the --host option,
@@ -292,8 +284,7 @@ libraries that OpenOCD depends on. Alternatively, you can specify
 *_CFLAGS and *_LIBS environment variables directly, see "./configure
 --help" for the details.
 
-Parallel Port Dongles
----------------------
+### Parallel Port Dongles
 
 If you want to access the parallel port using the PPDEV interface you
 have to specify both --enable-parport AND --enable-parport-ppdev, since the
@@ -304,8 +295,7 @@ use both the --enable-parport AND the --enable-parport-giveio option
 if you want to use giveio instead of ioperm parallel port access
 method.
 
-Using FTDI's FTD2XX
--------------------
+### Using FTDI's FTD2XX
 
 The (closed source) FTDICHIP.COM solution is faster than libftdi on
 Windows. That is the motivation for supporting it even though its
@@ -314,7 +304,7 @@ is not available for all operating systems used with OpenOCD. You may,
 however, build such copies for personal use.
 
 The FTDICHIP drivers come as either a (win32) ZIP file, or a (Linux)
-TAR.GZ file. You must unpack them ``some where'' convenient. As of this
+TAR.GZ file. You must unpack them `some where` convenient. As of this
 writing FTDICHIP does not supply means to install these files "in an
 appropriate place."
 
@@ -339,9 +329,7 @@ Note that on Linux there is no good reason to use these FTDI binaries;
 they are no faster (on Linux) than libftdi, and cause licensing issues.
 
 
-==========================
-Obtaining OpenOCD From GIT
-==========================
+## Obtaining OpenOCD From GIT
 
 You can download the current GIT version with a GIT client of your
 choice from the main repository:
