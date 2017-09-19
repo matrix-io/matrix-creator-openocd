@@ -1,5 +1,5 @@
-Welcome to OpenOCD!
-===================
+# Welcome to OpenOCD!
+![Build Status](https://drone.matrix.one/api/badges/matrix-io/matrix-creator-openocd/status.svg)
 
 OpenOCD provides on-chip programming and debugging support with a
 layered architecture of JTAG interface and TAP support including:
