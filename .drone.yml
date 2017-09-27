@@ -21,12 +21,11 @@ pipeline:
       # Prepare GPG
       - echo "$${GPG_KEY}" > /tmp/tmpkey && gpg --import /tmp/tmpkey && rm /tmp/tmpkey
       - echo "personal-digest-preferences SHA512" >> /root/.gnupg/gpg.conf
-      - echo "$${GPG_PASS}" | deb-s3 upload --bucket apt.matrix.one 
 
       # Upload packages
       - mv matrixio-openocd_${DRONE_TAG##v}_armhf.deb 
            matrixio-openocd_${DISTRIBUTION}-${CODENAME}-${DRONE_TAG##v}_armhf.deb
-      - deb-s3 upload --bucket apt.matrix.one 
+      - echo "$${GPG_PASS}" | deb-s3 upload --bucket apt.matrix.one 
         --prefix $DISTRIBUTION
         --codename $CODENAME
         --access-key-id $${AWS_ACCESS_KEY_ID}
