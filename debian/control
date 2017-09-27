@@ -15,6 +15,8 @@ Homepage: https://github.com/matrix-io/matrix-creator-openocd
 Package: matrixio-openocd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: matrix-creator-openocd
+Replaces: matrix-creator-openocd
 Description: Open on-chip JTAG debug solution for ARM and MIPS systems
  OpenOCD is an on-chip debugging, in-system programming and boundary-scan
  testing tool for ARM and MIPS systems.

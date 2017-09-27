@@ -8,9 +8,8 @@ pipeline:
     mountoffset: ${MOUNTOFFSET}
     body: |
       apt-get update
-      apt-get install --yes --no-install-recommends libusb-1.0-0-dev cdbs debhelper autotools-dev texinfo texlive autotools-dev autoconf libjim-dev pkg-config dh-autoreconf
-      touch README
-      ./bootstrap && ./configure && debuild -us -uc -b 
+      apt-get install --yes --no-install-recommends libusb-1.0-0-dev cdbs texinfo texlive libjim-dev 
+      ./bootstrap && ./configure && debuild -us -uc -b
       mv ../*.deb .
 
   upload-debs:
@@ -19,14 +18,22 @@ pipeline:
     image: gcr.io/admobilize-testing/gce-builder:latest
     secrets: [aws_access_key_id, aws_secret_access_key]
     commands:
+      # Prepare GPG
+      - echo "$${GPG_KEY}" > /tmp/tmpkey && gpg --import /tmp/tmpkey && rm /tmp/tmpkey
+      - echo "personal-digest-preferences SHA512" >> /root/.gnupg/gpg.conf
+      - echo "$${GPG_PASS}" | deb-s3 upload --bucket apt.matrix.one 
+
+      # Upload packages
       - mv matrixio-openocd_${DRONE_TAG##v}_armhf.deb 
-           matrixio-openocd_${DRONE_TAG##v}-${CODENAME}_armhf.deb
-      - deb-s3 upload --bucket packages.matrixlabs.ai 
+           matrixio-openocd_${DISTRIBUTION}-${CODENAME}-${DRONE_TAG##v}_armhf.deb
+      - deb-s3 upload --bucket apt.matrix.one 
         --prefix $DISTRIBUTION
         --codename $CODENAME
         --access-key-id $${AWS_ACCESS_KEY_ID}
         --secret-access-key $${AWS_SECRET_ACCESS_KEY}
-        matrixio-openocd_${DRONE_TAG##v}-${CODENAME}_armhf.deb
+        --sign info@matrix.one 
+        --gpg-options="--batch --passphrase-fd 0"
+        matrixio-openocd_${DISTRIBUTION}-${CODENAME}-${DRONE_TAG##v}_armhf.deb
 
   notify-always:
     image: plugins/slack
@@ -38,12 +45,13 @@ pipeline:
       event: tag 
     template: |
       {{#success build.status}}
-        {{build.author}} just built `{{repo.name}}:{{build.branch}}` from <{{repo.link}}|#{{truncate build.commit 8}}>
+        {{build.author}} just built `{{repo.name}}:{{build.branch}}` from <${DRONE_COMMIT_LINK}|#{{truncate build.commit 8}}>
         :new: {{build.message}}
-        :debian: The new `matrixio-openocd_{{drone.tag}}_armhf.deb` was created
+        :debian: The new `matrixio-openocd_${DISTRIBUTION}-${CODENAME}-${DRONE_TAG##v}_armhf.deb` was published to apt.matrix.one
       {{else}}
-        {{build.author}} just broke the build of `{{repo.name}}:{{build.branch}}` with <{{repo.link}}|#{{truncate build.commit 8}}>
+        {{build.author}} just broke the build of `{{repo.name}}:{{build.branch}}` with <${DRONE_COMMIT_LINK}|#{{truncate build.commit 8}}>
         :new: :zombie: {{build.message}}
+        :debian: The package `matrixio-openocd_${DISTRIBUTION}-${CODENAME}-${DRONE_TAG##v}_armhf.deb` failed to build.
       {{/success}}
       :stopwatch: {{ since build.started}}
       :gear: {{build.link}}
