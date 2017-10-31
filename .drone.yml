@@ -22,9 +22,13 @@ pipeline:
       - echo "$${GPG_KEY}" > /tmp/tmpkey && gpg --import /tmp/tmpkey && rm /tmp/tmpkey
       - echo "personal-digest-preferences SHA512" >> /root/.gnupg/gpg.conf
 
+      # Only TAG events are published to main
+      - export COMPONENT=$([ "${DRONE_BUILD_EVENT}" = "tag" ] && echo "main" || echo "unstable")
+      - export PKG_VER=$(dpkg-parsechangelog --show-field Version -ldebian/changelog)
+
       # Upload packages
-      - mv matrixio-openocd_${DRONE_TAG##v}_armhf.deb 
-           matrixio-openocd_${DISTRIBUTION}-${CODENAME}-${DRONE_TAG##v}_armhf.deb
+      - mv matrixio-openocd_$${PKG_VER}_armhf.deb 
+           matrixio-openocd_${DISTRIBUTION}-${CODENAME}-$${PKG_VER}_armhf.deb
       - echo "$${GPG_PASS}" | deb-s3 upload --bucket apt.matrix.one 
         --prefix $DISTRIBUTION
         --codename $CODENAME
@@ -32,7 +36,7 @@ pipeline:
         --secret-access-key $${AWS_SECRET_ACCESS_KEY}
         --sign info@matrix.one 
         --gpg-options="--batch --passphrase-fd 0"
-        matrixio-openocd_${DISTRIBUTION}-${CODENAME}-${DRONE_TAG##v}_armhf.deb
+        matrixio-openocd_${DISTRIBUTION}-${CODENAME}-$${PKG_VER}_armhf.deb
 
   notify-always:
     image: plugins/slack
@@ -46,11 +50,11 @@ pipeline:
       {{#success build.status}}
         {{build.author}} just built `{{repo.name}}:{{build.branch}}` from <${DRONE_COMMIT_LINK}|#{{truncate build.commit 8}}>
         :new: {{build.message}}
-        :debian: The new `matrixio-openocd_${DISTRIBUTION}-${CODENAME}-${DRONE_TAG##v}_armhf.deb` was published to apt.matrix.one
+        :debian: The new `matrixio-openocd_${DISTRIBUTION}-${CODENAME}-_armhf.deb` was published to apt.matrix.one 
       {{else}}
         {{build.author}} just broke the build of `{{repo.name}}:{{build.branch}}` with <${DRONE_COMMIT_LINK}|#{{truncate build.commit 8}}>
         :new: :zombie: {{build.message}}
-        :debian: The package `matrixio-openocd_${DISTRIBUTION}-${CODENAME}-${DRONE_TAG##v}_armhf.deb` failed to build.
+        :debian: The package `matrixio-openocd_${DISTRIBUTION}-${CODENAME}-_armhf.deb` failed to build.
       {{/success}}
       :stopwatch: {{ since build.started}}
       :gear: {{build.link}}
