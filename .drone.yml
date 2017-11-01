@@ -33,6 +33,7 @@ pipeline:
            matrixio-openocd_${DISTRIBUTION}-${CODENAME}-$${PKG_VER}_armhf.deb
       - echo "$${GPG_PASS}" | deb-s3 upload --bucket apt.matrix.one 
         --prefix $DISTRIBUTION
+        --component $COMPONENT
         --codename $CODENAME
         --access-key-id $${AWS_ACCESS_KEY_ID}
         --secret-access-key $${AWS_SECRET_ACCESS_KEY}
