@@ -1,7 +1,8 @@
 pipeline:
   build-debs:
     when:
-      event: tag
+      branch: master
+      event: [ push, pull_request, tag ]
     image: gcr.io/admobilize-testing/builder-qemu:latest
     privileged: true
     mountimg: ${MOUNTIMG}
@@ -14,7 +15,8 @@ pipeline:
 
   upload-debs:
     when:
-      event: tag
+      branch: master
+      event: [ push, pull_request, tag ]
     image: gcr.io/admobilize-testing/gce-builder:latest
     secrets: [aws_access_key_id, aws_secret_access_key, gpg_key, gpg_pass]
     commands:
@@ -38,6 +40,9 @@ pipeline:
         --gpg-options="--batch --passphrase-fd 0"
         matrixio-openocd_${DISTRIBUTION}-${CODENAME}-$${PKG_VER}_armhf.deb
 
+      # Render the notification template for the notify-slack step
+      - j2 --var-delimiter '%%' .drone/slack.tpl > notification.tpl
+
   notify-always:
     image: plugins/slack
     secrets: [slack_webhook]
@@ -45,29 +50,19 @@ pipeline:
     channel: notifications
     when:
       status: [ success, failure ]
-      event: tag 
-    template: |
-      {{#success build.status}}
-        {{build.author}} just built `{{repo.name}}:{{build.branch}}` from <${DRONE_COMMIT_LINK}|#{{truncate build.commit 8}}>
-        :new: {{build.message}}
-        :debian: The new `matrixio-openocd_${DISTRIBUTION}-${CODENAME}-_armhf.deb` was published to apt.matrix.one 
-      {{else}}
-        {{build.author}} just broke the build of `{{repo.name}}:{{build.branch}}` with <${DRONE_COMMIT_LINK}|#{{truncate build.commit 8}}>
-        :new: :zombie: {{build.message}}
-        :debian: The package `matrixio-openocd_${DISTRIBUTION}-${CODENAME}-_armhf.deb` failed to build.
-      {{/success}}
-      :stopwatch: {{ since build.started}}
-      :gear: {{build.link}}
+      branch: master
+      event: [push, pull_request, tag]
+    template: file:///drone/src/github.com/matrix-io/matrix-creator-openocd/notification.tpl
 
 matrix:
   include: 
     - CODENAME: jessie
       DISTRIBUTION: raspbian
       MOUNTOFFSET: 48234496
-      MOUNTDIR: /drone/src/github.com/matrix-io/openocd
+      MOUNTDIR: /drone/src/github.com/matrix-io/matrix-creator-openocd
       MOUNTIMG: https://storage.googleapis.com/raspbian-images/2017-07-05-raspbian-jessie-debuild.img.gz
     - CODENAME: stretch
       MOUNTOFFSET: 48234496
-      MOUNTDIR: /drone/src/github.com/matrix-io/openocd
+      MOUNTDIR: /drone/src/github.com/matrix-io/matrix-creator-openocd
       DISTRIBUTION: raspbian
       MOUNTIMG: https://storage.googleapis.com/raspbian-images/2017-08-16-raspbian-stretch-debuild.img.gz
