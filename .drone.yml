@@ -42,7 +42,7 @@ pipeline:
       # Render the notification template for the notify-slack step
       - j2 --var-delimiter '%%' .drone/slack.tpl > notification.tpl
 
-notify-always:
+  notify-always:
     image: plugins/slack
     secrets: [slack_webhook]
     username: drone-ci-builder
