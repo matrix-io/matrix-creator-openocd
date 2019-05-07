@@ -3,13 +3,13 @@ pipeline:
     when:
       branch: master
       event: [ push, pull_request, tag ]
-    image: gcr.io/admobilize-testing/creator-builder-${ARCHITECTURE}-${DISTRIBUTION}-${CODENAME}-${IMAGE_TAG}
+    image: gcr.io/admobilize-testing/creator-builder-${ARCHITECTURE}-${DISTRIBUTION}-${CODENAME}:${IMAGE_TAG}
     privileged: true
-    body: |
-      apt-get update
-      apt-get install --yes --no-install-recommends libusb-1.0-0-dev cdbs texinfo texlive libjim-dev 
-      ./bootstrap && ./configure && debuild -us -uc -b
-      mv ../*.deb .
+    commands:
+      - apt-get update
+      - apt-get install --yes --no-install-recommends libusb-1.0-0-dev cdbs texinfo texlive libjim-dev 
+      - ./bootstrap && ./configure && debuild -us -uc -b
+      - mv ../*.deb .
 
   upload-debs:
     when:
