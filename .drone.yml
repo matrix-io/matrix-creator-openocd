@@ -7,7 +7,7 @@ pipeline:
     privileged: true
     commands:
       - apt-get update
-      - apt-get install --yes --no-install-recommends libusb-1.0-0-dev cdbs texinfo texlive libjim-dev 
+      - apt-get install --yes --no-install-recommends libusb-1.0-0-dev cdbs texinfo texlive libjim-dev pkgconf
       - ./bootstrap && ./configure && debuild -us -uc -b
       - mv ../*.deb .
 
